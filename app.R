@@ -175,7 +175,7 @@ ui <- dashboardPage(
                                       shinySaveButton('file5',
                                                       'Save File As',
                                                       'Save the file as:',
-                                                      filetype=list(vector=c('shp'))),
+                                                      filetype=list(vector=c('shp'),("raster"=c('tif')))),
                                       verbatimTextOutput("savefilepath5"),
                                       br(),
                                       withBusyIndicatorUI(
@@ -295,12 +295,12 @@ server <- function(input, output, session) {
       print(paste("otbcli_Segmentation -in ",file4," -filter ",segalg," -filter.meanshift.spatialr ", segrad,
                    " -filter.meanshift.ranger ",segrng," -filter.meanshift.thres ",segthr,
                    " -filter.meanshift.maxiter ",segitr," -filter.meanshift.minsize ",segsze,
-                   " -mode ",segmde," -mode.vector.out ",file5, sep=""))
+                   " -mode ",segmde," -mode.",segmde,".out ",file5, sep=""))
       
       system(paste("otbcli_Segmentation -in ",file4," -filter ",segalg," -filter.meanshift.spatialr ", segrad,
                    " -filter.meanshift.ranger ",segrng," -filter.meanshift.thres ",segthr,
                    " -filter.meanshift.maxiter ",segitr," -filter.meanshift.minsize ",segsze,
-                   " -mode ",segmde," -mode.vector.out ",file5, sep=""))
+                   " -mode ",segmde," -mode.",segmde,".out ",file5, sep=""))
       })
     })
   
